@@ -101,8 +101,10 @@ echo "parameter: ${FLAGS_REMOTE_ACCESS}"
 # Execute with default settings
 /noVNC/utils/launch.sh --listen 6080 &
 set -x
-exec /usr/bin/kvm ${FLAGS_REMOTE_ACCESS} \
-   -k en-us -m ${VM_RAM} -cpu qemu64 \
-   ${FLAGS_NETWORK} \
-   ${FLAGS_ISO} \
-   ${FLAGS_DISK_IMAGE}
+#exec /usr/bin/kvm ${FLAGS_REMOTE_ACCESS} \
+#   -k en-us -m ${VM_RAM} -cpu qemu64 \
+#   ${FLAGS_NETWORK} \
+#   ${FLAGS_ISO} \
+#   ${FLAGS_DISK_IMAGE}
+
+qemu-system-aarch64 ${FLAGS_REMOTE_ACCESS} -k en-us -m ${VM_RAM} -cpu max ${FLAGS_NETWORK} -drive format=raw,file=${ISO}
